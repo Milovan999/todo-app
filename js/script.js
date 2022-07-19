@@ -33,7 +33,22 @@ const addTask = () => {
     task.appendChild(editBtn);
     task.appendChild(deleteBtn);
 
-    editBtn.addEventListener("click", function () {});
+    inputTaskField.value = "";
+
+    editBtn.addEventListener("click", () => {
+      taskTitle.contentEditable = true;
+
+      const doneBtn = document.createElement("button");
+      doneBtn.innerHTML = "DONE";
+      doneBtn.className = "done-btn";
+
+      task.appendChild(doneBtn);
+
+      doneBtn.addEventListener("click", () => {
+        taskTitle.contentEditable = false;
+        doneBtn.style.display = "none";
+      });
+    });
     deleteBtn.addEventListener("click", function () {
       task.remove();
     });
